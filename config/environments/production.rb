@@ -54,6 +54,24 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
+
+# email enabled in production
+config.action_mailer.smtp_settings = {
+  address: "smtp.sendgrid.net",
+  port: 587,
+  domain: Rails.application.secrets.domain_name,
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: Rails.application.secrets.email_provider_username,
+  password: Rails.application.secrets.email_provider_password
+}
+# ActionMailer Config
+config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = false
+  
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
