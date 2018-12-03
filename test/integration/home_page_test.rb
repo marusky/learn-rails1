@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'spec_helper'
 
 # Feature: Home page
 #   As a visitor
